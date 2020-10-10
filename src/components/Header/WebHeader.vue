@@ -15,7 +15,9 @@
                     </v-col>
                 </v-row>
             </v-col>
-            <v-col cols="1" class="serach">2</v-col>
+            <v-col cols="1" class="serach">
+                <i class="fas fa-search"></i>
+            </v-col>
             <v-col cols="1" class="avatar">2</v-col>
         </v-row>
     </div>

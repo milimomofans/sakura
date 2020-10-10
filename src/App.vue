@@ -60,3 +60,8 @@ export default {
   }),
 };
 </script>
+<style>
+  html,body{
+    cursor:url('https://cdn.jsdelivr.net/gh/milimomofans/cdn@1.0.1/imgs/ayuda.cur') auto;
+  }
+</style>

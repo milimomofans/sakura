@@ -1,10 +1,10 @@
 <template>
-    <div class="header">
+    <div class="header" @mousemove="()=>{showHeader = true}" @mouseout="()=>{showHeader = false}">
         <v-row>
             <v-col cols="3" >
                 <h1 class="name">{{ $t('authorInfo.name') }}</h1>
             </v-col>
-            <v-col cols="6" class="header_list">
+            <v-col v-show="showHeader" cols="6" class="header_list">
                 <v-row
                     align="center"
                     justify="space-around"
@@ -18,7 +18,15 @@
             <v-col cols="1" class="serach">
                 <i class="fas fa-search"></i>
             </v-col>
-            <v-col cols="1" class="avatar">2</v-col>
+            <v-col cols="1" class="avatar">
+                <v-img
+                    lazy-src=""
+                    max-height=""
+                    max-width=""
+                    src=""
+                >
+                </v-img>
+            </v-col>
         </v-row>
     </div>
 </template>
@@ -35,7 +43,8 @@ export default {
     },
     data(){
         return {
-            listIndex:-1
+            listIndex:-1,
+            showHeader:false
         }
     },
     mounted(){
@@ -59,7 +68,10 @@ export default {
         width: 100%;
         height:75px;
         background: rgba(255,255,255,0);
+        transition: all .3s;
+        padding: 0 20px;
     }
+
     .name{
         color:#464646;
         font-weight: 400;
@@ -67,6 +79,10 @@ export default {
             color: #e67474;
             transition: color .2s ease-out,border .2s ease-out,opacity .2s ease-out
         }
+    }
+    .header_list{
+        -webkit-animation: tilt-in-fwd-tr 0.6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+        animation: tilt-in-fwd-tr 0.6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
     }
     .list_item{
         display: flex;

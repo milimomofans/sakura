@@ -1,10 +1,19 @@
 <template>
-    <div class="header">
-        <v-row>
-            <v-col cols="3" >
+    <div class="header" 
+        @mouseover="()=>{    
+            if(!showList) return showList=true
+        }" 
+        @mouseout="()=>{
+            if(showList) return showList=false
+        }"
+    >
+        <v-row
+           style="align-items:center"
+        >
+            <v-col cols="4" >
                 <h1 class="name">{{ $t('authorInfo.name') }}</h1>
             </v-col>
-            <v-col cols="6" class="header_list">
+            <v-col cols="6" class="header_list" v-if="showList">
                 <v-row
                     align="center"
                     justify="space-around"
@@ -15,10 +24,22 @@
                     </v-col>
                 </v-row>
             </v-col>
+            <v-col cols="6" v-else></v-col>
             <v-col cols="1" class="serach">
-                <i class="fas fa-search"></i>
+                <span><i class="fas fa-search" style="font-size:32px;"></i></span>
             </v-col>
-            <v-col cols="1" class="avatar">2</v-col>
+            <v-col cols="1" class="avatar">
+                <v-avatar
+                    size="48"
+                >
+                    <v-img
+                        width="30"
+                        :lazy-src="CDN('imgs/loadcat.gif')"
+                        :src="CDN('pixiv/avatar.jpg')"
+                    >
+                    </v-img>
+                </v-avatar>
+            </v-col>
         </v-row>
     </div>
 </template>
@@ -35,7 +56,8 @@ export default {
     },
     data(){
         return {
-            listIndex:-1
+            listIndex:-1,
+            showList:false
         }
     },
     mounted(){
@@ -59,6 +81,8 @@ export default {
         width: 100%;
         height:75px;
         background: rgba(255,255,255,0);
+        padding:0 3rem;
+        transition: background .3s;
     }
     .name{
         color:#464646;

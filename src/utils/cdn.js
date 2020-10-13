@@ -1,4 +1,4 @@
-const verson = '1.0.0'
+const verson = '1.0.2'
 const beseUrl = `https://cdn.jsdelivr.net/gh/milimomofans/cdn@${verson}`
 
 export function CDN(sourcePath) {

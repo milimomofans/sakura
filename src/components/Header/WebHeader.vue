@@ -1,10 +1,20 @@
 <template>
-    <div class="header" @mousemove="()=>{showHeader = true}" @mouseout="()=>{showHeader = false}">
-        <v-row>
-            <v-col cols="3" >
+    <div class="header" 
+        @mouseenter="()=>{    
+            if(!showList) return showList=true
+        }" 
+        @mouseleave="()=>{
+            if(showList) return showList=false
+        }"
+    >
+        <v-row
+           style="align-items:center;position:relative"
+           justify="space-between"
+        >
+            <v-col>
                 <h1 class="name">{{ $t('authorInfo.name') }}</h1>
             </v-col>
-            <v-col v-show="showHeader" cols="6" class="header_list">
+            <div class="header_list" v-show="showList">
                 <v-row
                     align="center"
                     justify="space-around"
@@ -14,18 +24,19 @@
                         <span :class="index === listIndex && 'curSpan'">{{ i.name }}</span>
                     </v-col>
                 </v-row>
-            </v-col>
-            <v-col cols="1" class="serach">
-                <i class="fas fa-search"></i>
-            </v-col>
-            <v-col cols="1" class="avatar">
-                <v-img
-                    lazy-src=""
-                    max-height=""
-                    max-width=""
-                    src=""
+            </div>
+            <v-col cols="3" class="serach-avatar" >
+                <span><i class="fas fa-search" style="font-size:32px;"></i></span>
+                <v-avatar
+                    size="48"
                 >
-                </v-img>
+                    <v-img
+                        width="30"
+                        :lazy-src="CDN('imgs/loadcat.gif')"
+                        :src="CDN('pixiv/avatar.jpg')"
+                    >
+                    </v-img>
+                </v-avatar>
             </v-col>
         </v-row>
     </div>
@@ -44,7 +55,7 @@ export default {
     data(){
         return {
             listIndex:-1,
-            showHeader:false
+            showList:false
         }
     },
     mounted(){
@@ -68,8 +79,8 @@ export default {
         width: 100%;
         height:75px;
         background: rgba(255,255,255,0);
-        transition: all .3s;
-        padding: 0 20px;
+        padding:0 3rem;
+        transition: background .3s;
     }
 
     .name{
@@ -81,8 +92,16 @@ export default {
         }
     }
     .header_list{
+        max-width:680px;
+        position: absolute;
+        left:30%;
         -webkit-animation: tilt-in-fwd-tr 0.6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
         animation: tilt-in-fwd-tr 0.6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    }
+    .serach-avatar{
+        display:flex;
+        align-items:center;
+        justify-content: space-around;
     }
     .list_item{
         display: flex;

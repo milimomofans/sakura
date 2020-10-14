@@ -1,5 +1,6 @@
 <template>
     <div class="header" 
+        :class="showList && 'headerAnimal'"
         @mouseenter="()=>{    
             if(!showList) return showList=true
         }" 
@@ -58,9 +59,6 @@ export default {
             showList:false
         }
     },
-    mounted(){
-        console.log(this.List)
-    },
     methods:{
         CDN,
         moveHandler(index){
@@ -80,7 +78,15 @@ export default {
         height:75px;
         background: rgba(255,255,255,0);
         padding:0 3rem;
-        transition: background .3s;
+        transition: all .3s;
+        position:fixed;
+        top:0;
+        left:0;
+        z-index:10;
+    }
+    .headerAnimal{
+        background: rgba(255,255,255,1);
+        box-shadow: 0 7px 5px -5px #333;
     }
 
     .name{

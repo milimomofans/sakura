@@ -42,7 +42,7 @@
     </div>
 </template>
 <script>
-import {CDN} from '@/utils/cdn'
+import {CDN} from '../../utils/cdn'
 export default {
     props:{
         List:{

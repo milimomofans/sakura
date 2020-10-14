@@ -1,11 +1,12 @@
 <template>
     <div>
         <Header></Header>
-        <img :src="CDN('pixiv/hello-mio-web')" :style="bgSize">
+        <img :src="CDN('pixiv/hello-mio-web.jpg')" :style="bgSize">
     </div>
 </template>
 <script>
-import {CDN} from 'utils/util'
+import {CDN} from '@/utils/cdn'
+
 export default {
     mounted(){
         console.log(window)

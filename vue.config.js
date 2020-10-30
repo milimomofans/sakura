@@ -20,5 +20,17 @@ module.exports = {
       localeDir: 'locales',
       enableInSFC: false
     }
+  },
+  devServer:{
+    proxy:{
+      '/article':{
+        target:'http://localhost:3000/article',
+        wx:false,
+        changeOrigin:true,
+        pathRewrite:{
+          '^/article': ''  //路径重写 
+        }
+      }
+    }
   }
 }
